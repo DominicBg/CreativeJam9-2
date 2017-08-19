@@ -107,8 +107,11 @@
      <Compile Include="Assets\Scripts\Managers\WaterManager.cs" />
      <Compile Include="Assets\Scripts\Players\Bullet.cs" />
      <Compile Include="Assets\Scripts\Players\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Props\Billboard.cs" />
+     <Compile Include="Assets\Scripts\Props\Marchand.cs" />
      <Compile Include="Assets\Scripts\Props\Water.cs" />
      <Compile Include="Assets\TestSound.cs" />
+     <Compile Include="Assets\UIFollowGameObject.cs" />
      <Compile Include="Assets\Wwise\Deployment\API\Generated\Common\AKRESULT.cs" />
      <Compile Include="Assets\Wwise\Deployment\API\Generated\Common\AkActionOnEventType.cs" />
      <Compile Include="Assets\Wwise\Deployment\API\Generated\Common\AkAudioDeviceState.cs" />

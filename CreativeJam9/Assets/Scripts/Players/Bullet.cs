@@ -25,4 +25,17 @@ public class Bullet : MonoBehaviour {
 	{
 		tr.position += tr.forward * Time.deltaTime * speed;
 	}
+	void OnTriggerEnter(Collider col)
+	{
+		if(col.CompareTag("Wall"))
+		{
+			HitTarget();
+		}
+	}
+	public void HitTarget()
+	{
+		//play animation
+
+		Destroy (gameObject);
+	}
 }

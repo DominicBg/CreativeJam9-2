@@ -95,4 +95,10 @@ public static class Vector234Extensions
 			number = 1;
 		return number;
 	}
+	public static int Minimum(this int number, int min)
+	{
+		if(number < min)
+			number = min;
+		return number;
+	}
 }
