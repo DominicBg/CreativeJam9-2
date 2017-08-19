@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3157003241	TEST			\Default Work Unit\Character\TEST	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	403080995	SIR_AMB_Aquarium_Bubbles_01	C:\Users\Bill\Documents\WwiseProjects\CreativeJam9\.cache\Windows\SFX\SIR_AMB_Aquarium_Bubbles_01_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\Character\SIR_AMB_Aquarium_Bubbles_01		109198
+
