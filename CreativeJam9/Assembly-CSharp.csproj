@@ -99,10 +99,12 @@
      <Compile Include="Assets\Rewired\Internal\Scripts\InputManager.cs" />
      <Compile Include="Assets\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
      <Compile Include="Assets\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraActionBoxFollower.cs" />
      <Compile Include="Assets\Scripts\Libraries\GameEffect.cs" />
      <Compile Include="Assets\Scripts\Libraries\Vector234Extensions.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\WaterManager.cs" />
      <Compile Include="Assets\Scripts\Players\Bullet.cs" />
      <Compile Include="Assets\Scripts\Players\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Props\Water.cs" />
@@ -268,10 +270,10 @@
  <HintPath>C:/Program Files/Unity5.6.3/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Rewired_Core">
- <HintPath>C:/Users/Dominic/Documents/CreativeJam9-2/CreativeJam9work/CreativeJam9/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+ <HintPath>C:/Users/Dominic/Documents/CreativeJam9-2/CreativeJam9/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
  </Reference>
  <Reference Include="Rewired_Windows_Lib">
- <HintPath>C:/Users/Dominic/Documents/CreativeJam9-2/CreativeJam9work/CreativeJam9/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
+ <HintPath>C:/Users/Dominic/Documents/CreativeJam9-2/CreativeJam9/Assets/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

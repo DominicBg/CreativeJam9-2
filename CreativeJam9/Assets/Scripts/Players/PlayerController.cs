@@ -12,29 +12,38 @@ public class PlayerController : MonoBehaviour {
 	[Header("Component")]
 	Transform tr;
 	Rigidbody rb;
+	BoxCollider boxCollider;
+
+	[SerializeField] Transform cactusTr;
 	[SerializeField] Transform baseTr;
 	[SerializeField] Transform cannonShootPosition;
 
+
 	[SerializeField] GameObject bulletPrefab;
-	[SerializeField] GameObject waterPrefab;
+	//[SerializeField] GameObject waterPrefab;
 
 	[Header("Stats")]
 	public int waterLevel = 100; //HP
 	public float moveSpeed;
 	public float rotationSpeed;
 	public float bulletSpeed;
+
+	[Header("Cooldown")]
 	public float cooldownShoot = 0.5f;
 	public float cooldownDash = 0.5f;
+
+	[Header("Dash/Knock")]
 	public float dashForce = 15;
 	public float knockbackForce = 15;
 	public int dropPercentage = 30;
+	public float stunnedDelay = 1;
 	//public int damage = 10;
 
 	[Header("Scaling")]
 	public Vector3 basicScale = Vector3.one;
 	public Vector3 waterWeightScaling = Vector3.one;
 
-
+	[Header("Sliding")]
 	public float slideDirectionFactor;
 	public float slideFactor;
 
@@ -54,6 +63,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody>(); 
 		tr = GetComponent<Transform>();
+		boxCollider = GetComponent<BoxCollider>();
 		player = ReInput.players.GetPlayer(playerID);
 		UpdateWaterLevel();
 	}
@@ -175,35 +185,36 @@ public class PlayerController : MonoBehaviour {
 			//knockback
 			rb.AddForce((bullet.transform.forward) * knockbackForce,ForceMode.Impulse);
 			Damaged(bullet);
-		
-			Stunned();
-			LooseWater();
 		}
 	}
 	void Damaged(Bullet bullet)
 	{
 		//get hit > loose 15% of total
 		//int damageHit = (int)((float)waterLevel * ((float)dropPercentage/100));
-		int damageHit = GameManager.GiveIntPercent(dropPercentage,waterLevel).MinimumOne();
+		int damageHit = WaterManager.GiveIntPercent(dropPercentage,waterLevel).MinimumOne();
 
 		waterLevel -= damageHit;
-
-		GameManager.instance.SpawnWater(damageHit,tr.position,-bullet.transform.forward);
-		UpdateWaterLevel();
-	
+		
 		if(waterLevel <= 0)
 		{
 			DeathPlayer();
 		}
+		else
+		{
+			StartCoroutine(Stunned());
+		}
+
+		WaterManager.instance.SpawnWater(damageHit,tr.position,-bullet.transform.forward);
+		UpdateWaterLevel();
 	}
-	void Stunned()
+	IEnumerator Stunned()
 	{
+		boxCollider.enabled = false;
+		yield return new WaitForSeconds(stunnedDelay);
+		boxCollider.enabled = true;
 
 	}
-	void LooseWater()
-	{
 
-	}
 	void DeathPlayer()
 	{
 		isDead = true;
@@ -222,7 +233,7 @@ public class PlayerController : MonoBehaviour {
 		if(waterLevel > 100)
 			waterLevel = 100;
 
-		tr.localScale = basicScale + ((float)waterLevel * waterWeightScaling);
+		cactusTr.localScale = basicScale + ((float)waterLevel * waterWeightScaling);
 
 		UIManager.instance.AjustWaterLevel(playerID,waterLevel);
 	}
